@@ -92,27 +92,33 @@ function startHeartAnimation() {
 	};
 })(jQuery);
 
-function timeElapse(date){
-	var current = Date();
-	var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
-	var days = Math.floor(seconds / (3600 * 24));
-	seconds = seconds % (3600 * 24);
-	var hours = Math.floor(seconds / 3600);
-	if (hours < 10) {
-		hours = "0" + hours;
-	}
-	seconds = seconds % 3600;
-	var minutes = Math.floor(seconds / 60);
-	if (minutes < 10) {
-		minutes = "0" + minutes;
-	}
-	seconds = seconds % 60;
-	if (seconds < 10) {
-		seconds = "0" + seconds;
-	}
-	var result = "<span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
-	$("#elapseClock").html(result);
+function timeElapse() {
+    // Set the starting date as 23 October 2024
+    var startDate = new Date("October 23, 2024 00:00:00");
+
+    var current = new Date(); // Get the current date
+    var seconds = (current - startDate) / 1000; // Calculate difference in seconds
+    var days = Math.floor(seconds / (3600 * 24)); // Get the number of days
+    seconds = seconds % (3600 * 24); // Get remaining seconds after removing days
+    var hours = Math.floor(seconds / 3600); // Get the number of hours
+    if (hours < 10) {
+        hours = "0" + hours; // Add leading zero if hours are less than 10
+    }
+    seconds = seconds % 3600; // Get remaining seconds after removing hours
+    var minutes = Math.floor(seconds / 60); // Get the number of minutes
+    if (minutes < 10) {
+        minutes = "0" + minutes; // Add leading zero if minutes are less than 10
+    }
+    seconds = seconds % 60; // Get remaining seconds after removing minutes
+    if (seconds < 10) {
+        seconds = "0" + seconds; // Add leading zero if seconds are less than 10
+    }
+
+    // Format the result
+    var result = "<span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
+    $("#elapseClock").html(result); // Update the clock element with the result
 }
+
 
 function showMessages() {
 	adjustWordsPosition();
