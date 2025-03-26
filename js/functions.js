@@ -110,7 +110,8 @@ function timeElapse() {
         minutes = "0" + minutes; // Add leading zero if minutes are less than 10
     }
     seconds = seconds % 60; // Get remaining seconds after removing minutes
-    if (seconds < 10) {
+	seconds = seconds.toFixed(2);
+    if (seconds < 2) {
         seconds = "0" + seconds; // Add leading zero if seconds are less than 10
     }
 
